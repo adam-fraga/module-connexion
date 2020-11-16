@@ -1,0 +1,42 @@
+/*FORMULAIRE INSCRIPTION*/
+
+.form-inscription {
+    margin: 100px auto;
+    background: #343A40;
+    padding-top: 50px;
+    width: 40%;
+    height: 600px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.form-inscription label {
+    margin-bottom: 5px;
+    color: white;
+    font-size: 1.5em;
+
+}
+
+.form-inscription input {
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 20px;
+    width: 300px;
+    height: 50px;
+    box-shadow: 0px 0px 5px black;
+}
+
+.btn {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    background: #00c800;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.btn:hover {
+    background: #36fd36;
+    transition: 1s;
+}

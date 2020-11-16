@@ -1,0 +1,19 @@
+/*SEPARATEUR*/
+hr{
+    margin-bottom: 50px;
+}
+/*Banniere*/
+.banner{
+    width: 100%;
+    height: 300px;
+  background: center center url("../img/marc-olivier-jodoin-NqOInJ-ttqM-unsplash.jpg");
+    background-size: cover;
+}
+.pic-accueil{
+    margin-top: 200px;
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
+}
+

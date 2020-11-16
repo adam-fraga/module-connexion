@@ -1,0 +1,39 @@
+/*CSS GLOBAL*/
+
+* ,::after , ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*TEXTURE PAGE*/
+body{
+    background:center center no-repeat url("../img/plaque.jpg");
+    background-size: cover;
+}
+
+/*FLEX*/
+.col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*CONTAINER*/
+.container{
+    display: flex;
+    flex-direction: column;
+    margin:20px;
+    padding: 50px;
+}
+/*TITRE*/
+.title
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/*IMAGE*/
+
+/*CADRE*/
+.cadre {
+    border: 5px solid white;
+    border-style: double;
+}
