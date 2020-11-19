@@ -1,0 +1,49 @@
+/*-------------------------------------------ADMIN------------------------------------------------------------*/
+/*PRES ADMIN*/
+.article{
+    padding: 20px;
+    text-align: center;
+    background: rgba(0,0,0, .6);
+}
+
+
+.admin {
+    display: none;
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+/*FIX  TOP*/
+.fix-top{
+    margin-top:100px ;
+}
+
+/*TABLEAU*/
+th{
+    background: black;
+    font-family: Quantum;
+    font-size: 1.5em;
+}
+td,th{
+    border: 1px solid #F7D000;
+    border-style: double;
+    box-shadow: 0px 0px 5px white;
+    padding: 20px;
+
+}
+th{
+    text-transform: uppercase;
+}
+td{
+    color: red;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.info-user {
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+    padding: 20px;
+    border-collapse: collapse;
+    border: #F7D000 1px solid;
+}
