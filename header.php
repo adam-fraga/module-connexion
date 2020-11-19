@@ -12,8 +12,6 @@
 
     <title>Document</title>
 </head>
-
-
 <body>
 <header class="header">
     <nav class="nav">

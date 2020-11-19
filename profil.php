@@ -1,6 +1,17 @@
 <?php
+include 'config/db.php';
 session_start();
+echo "<pre>";
+print_r($_SESSION);
+echo "/<pre>";
 
+//PREPA REQUETE
+$request = "SELECT * FROM utilisateurs WHERE 1";
+//INITIALISE REQUETE
+$query = mysqli_query($connexion, $request);
+//RECUP DATA
+$data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+//COMPARE SESSION WITH DATA FROM DB
 
 ?>
 
@@ -22,9 +33,9 @@ session_start();
 <body>
 <!--INCLUSION HEADER-->
 <?php
-require_once('header.php');
+//require_once('header.php');
 ?>
-<!--PAGE INSCRIPTION-->
+    <!--PAGE INSCRIPTION-->
 <div class="container">
     <section class="edit-profil">
         <!--        PRESENTATION-->
@@ -38,7 +49,10 @@ require_once('header.php');
         <!--FORMULAIRE-->
         <form action="profil.php" METHOD="post" class="form-edit-profil cadre col">
             <label for="login">Login</label>
-            <input type="text" id="login" name="login" placeholder="Login">
+            <input type="text" id="login" name="login" placeholder="Login"
+                   value="<?php foreach ($data as $key => $value)
+
+                   if ($_SESSION['user']['login'] == $value['login']) {echo $value['login'];} ?>">
             <label for="pass">New Password</label>
             <input type="password" id="pass" name="pass" placeholder="Password">
             <label for="confpass">Confirm new Password</label>
@@ -48,9 +62,9 @@ require_once('header.php');
         </form>
     </section>
 </div>
-<!--INCLUSION FOOTER-->
+    <!--INCLUSION FOOTER-->
 <?php
-require_once('footer.php');
+require_once ('footer.php');
 ?>
 </body>
 </html>

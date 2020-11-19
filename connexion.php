@@ -17,10 +17,11 @@ foreach ($identifiants as $value)
         foreach ($identifiants as $value) {
             if ($value['login'] == $_POST['login'] && $value['password'] == $_POST['pass']) {
 //REDIRIGER USER VERS PAGE MODIF PROFIL
-            header("location: profil.php");
+                $_POST = $_SESSION['user'];
+                header("location: profil.php");
             }
+        }
     }
-
 //    SI LE TEMPS CREER UN FICHIER DE GESTION DES MESSAGES D'ERREUR ET L'INCLUDE ET VOIR POUR FONCTIONS
 
 ?>
