@@ -1,15 +1,19 @@
 /*CSS GLOBAL*/
-
 * ,::after , ::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/*TEXTURE PAGE*/
-body{
-    background:center center no-repeat url("../img/plaque.jpg");
-    background-size: cover;
+/*FONT GLOBAL*/
+@font-face {
+    font-family: "Quantum";
+    src: url("../font/Quantum.otf") format("opentype");
 }
+/*TEXTURE PAGE*/
+/*body{*/
+/*    background:fixed center center no-repeat url("../img/cubic.jpg");*/
+/*    background-size: cover;*/
+/*}*/
 
 /*FLEX*/
 .col{
@@ -25,15 +29,32 @@ body{
     padding: 50px;
 }
 /*TITRE*/
+.main-title{
+    font-family: Quantum;
+    color: white;
+}
 .title
 {
+    font-size: 1.8em;
+    font-family: Quantum;
+    color: #F7D000;
     margin-top: 20px;
     margin-bottom: 20px;
+    color: white;
 }
-/*IMAGE*/
 
 /*CADRE*/
 .cadre {
-    border: 5px solid white;
+    border: 1px solid #F7D000;
     border-style: double;
+    box-shadow: 0px 0px 5px white;
+}
+
+/*MISE EN FORME TEXTE*/
+.para{
+    color: white;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-shadow: 1px 1px 2px black;
+
 }

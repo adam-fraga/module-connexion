@@ -1,3 +1,31 @@
+<?php
+require 'config/db.php';
+//Initialisation session
+session_start();
+
+
+
+//VERIF CONDITION FORMULAIRE INSCRIPTION ET
+
+if (isset($_POST["valid_inscription"])) {
+    if (!empty($_POST['name']) && !empty($_POST['fname']) && !empty($_POST['login']) && !empty($_POST['pass']) && $_POST['pass'] == $_POST['confpass']) {
+        $name = $_POST['name'];
+        $fname = $_POST['fname'];
+        $login = $_POST['login'];
+        $pass = $_POST['pass'];
+
+        //        CREATION VARIABLE DE REQUETE
+        $request = "INSERT INTO utilisateurs (nom, prenom, login, password) VALUES ('$name', '$fname', '$login', '$pass')";
+
+        $query = mysqli_query($connexion, $request);
+
+        //REDIRIGE SUR LA PAGE CONNEXION.PHP
+        header("location: connexion.php");
+
+    }
+}
+
+?>
 
 <!doctype html>
 <html lang="fr">
@@ -16,34 +44,34 @@
 <body>
 <!--INCLUSION HEADER-->
 <?php
-require_once('header.php');
+//require_once('header.php');
 ?>
 <!--PAGE INSCRIPTION-->
 <div class="container">
     <section class="inscription">
-<!--        PRESENTATION-->
-        <h2 class="title"> Title</h2>
+        <!--        PRESENTATION-->
+        <div class="pres-inscrip cadre">
+            <h2 class="title"> Formulaire d'inscription</h2>
 
-        <p class="l">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-            commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-            obcaecati, placeat possimus quos repellendus.</p>
-<!--FORMULAIRE-->
-    <h3 class="title">Formulaire d'inscription</h3>
+            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
+                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
+                obcaecati, placeat possimus quos repellendus.</p>
+        </div>
+        <!--FORMULAIRE-->
+        <form action="inscription.php" METHOD="post" class="form-inscription cadre col">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Fname" maxlength="25" required>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Name" maxlength="25" required>
+            <label for="login">Login</label>
+            <input type="text" id="login" name="login" placeholder="Login" required>
+            <label for="pass">Password</label>
+            <input type="password" id="pass" name="pass" placeholder="Password" required>
+            <label for="confpass">Confirm Password</label>
+            <input type="password" id="confpass" name="confpass" placeholder="Confirm your password" required>
 
-    <form action="inscription.php" METHOD="post" class="form-inscription cadre col">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="Fname"  >
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name"  placeholder="Name">
-        <label for="login">Login</label>
-        <input type="text" id="login" name="login"  placeholder="Login">
-        <label for="pass">Password</label>
-        <input type="password" id="pass" name="pass" placeholder="Password">
-        <label for="confpass">Confirm Password</label>
-        <input type="password" id="confpass" name="confpass" placeholder="Confirm your password">
-
-        <button type="submit" name="submit" class="btn ">GO</button>
-    </form>
+            <button type="submit" name="valid_inscription" class="btn ">GO</button>
+        </form>
     </section>
 </div>
 <!--INCLUSION FOOTER-->

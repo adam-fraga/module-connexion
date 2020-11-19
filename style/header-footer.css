@@ -1,61 +1,137 @@
-* ,::after , ::before {
+*, ::after, ::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /* HEADER */
-.nav{
+.nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
     height: 60px;
     width: 100%;
-    border-bottom: 5px solid white;
+    border-bottom: 1px solid #F7D000;
     border-style: double;
-    background: #343A40;
-    box-shadow: black 2px 2px 5px;
+    background: #0D1A28;
+    box-shadow: white 0px 0px 5px;
 }
-.menu{
+
+.menu {
     height: 100%;
     width: 100%;
     display: flex;
     line-height: 60px;
     justify-content: space-evenly;
 }
-.menu  .items_menu {
-list-style-type: none;
+
+.menu .items_menu {
+    list-style-type: none;
 }
-.menu  .items_menu a{
+
+.menu .items_menu a {
+
     color: white;
     text-decoration: none;
 }
-.menu  .items_menu a:hover{
-text-shadow: white 0px 0px 15px;
-    transition:1s ;
+
+.menu .items_menu a:hover {
+    text-shadow: white 0px 0px 20px;
+    transition: 1s;
 }
 
+/*BOX LOG DELOG*/
+.box-log {
+    align-content: center;
+    align-items: center;
+    height: 60px;
+    justify-content: space-evenly;
+    width: 120px;
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    list-style: none;
+}
+
+.box-log a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+    border-right: 3px solid white;
+    border-left: 1px solid white;
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 2px 2px 10px white;
+
+}
+
+.box-log a:hover {
+    text-shadow: 0 0 10px white;
+    transition: 1s;
+}
 
 /*-----------------------------------------------------------FOOTER-------------------------------------------------*/
 
-.footer{
-
-    border-top: 5px solid white;
+.footer {
+    margin-top: 150px;
+    border-top: 1px solid #F7D000;
     border-style: double;
     display: flex;
-    height: 40px;
     width: 100%;
-    background: #343A40;
-    box-shadow: black -2px -2px 5px;
+    background: #0D1A28;
+    box-shadow: white 0px 0px 5px;
 }
-.foot-menu{
+
+.foot-menu {
     width: 100%;
     display: flex;
     line-height: 40px;
     justify-content: space-evenly;
 }
-.foot-menu .item-foot{
+
+.foot-menu .item-foot {
     list-style-type: none;
-    text-decoration: none;
 }
-.footer .foot-menu .item-foot a{
+
+
+
+.footer .foot-menu .item-foot a {
+    font-family: Quantum;
     color: white;
     text-decoration: none;
 }
 
+
+/*SEPARATEUR FOOTER*/
+
+.sep-foot {
+    width: 50%;
+    margin: 20px;
+}
+
+/*SOCIAL NETWORK*/
+
+.social {
+    padding: 20px;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 30%;
+}
+
+.social h3 {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.svg {
+    width: 50px;
+    color: white;
+}
+
+.svg:hover {
+    transform: scale(1.1);
+}

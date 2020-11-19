@@ -17,42 +17,26 @@
 require_once('header.php');
 ?>
 <main>
+    <h1 class="main-title title">ALESIA</h1>
 
-    <div class="banner">
-        <h1 class="space main-title title">ALESIA</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur dolor eum, fugit iure laboriosam
-            quam quidem temporibus vitae. Alias aperiam beatae dicta nam obcaecati quidem, quod tempora voluptatem
-            voluptates.Cum dignissimos doloremque eligendi excepturi explicabo, facilis fugit in iste laborum natus
-
-        </p>
+    <div class="banner cadre">
     </div>
+
     <div class="container">
-        <article class="article space">
+        <article class="article cadre">
             <h2 class="title"> Title</h2>
 
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
+            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
                 commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
                 obcaecati, placeat possimus quos repellendus.</p>
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
+            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
                 commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
                 obcaecati, placeat possimus quos repellendus.</p>
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
+            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
                 commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
                 obcaecati, placeat possimus quos repellendus.</p>
         </article>
-        <article class="article space">
-            <h2 class="title"> Title</h2>
 
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
-            <p class="l">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
-            <p class="l">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
-        </article>
     </div>
 </main>
 <?php

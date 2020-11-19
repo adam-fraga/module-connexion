@@ -12,12 +12,25 @@
 </head>
 
 <body>
-<footer class="footer">
+<footer class="footer col">
     <ul class="foot-menu">
         <li class="item-foot"><a href="">Contactez-nous</a></li>
         <li class="item-foot"><a href="">Lien Externes</a></li>
         <li class="item-foot"><a href="">Réseaux sociaux</a></li>
     </ul>
+    <aside class="col social title">
+        <h3>Rejoins nous sur les réseaux!</h3>
+        <hr class="sep-foot">
+
+        <div>
+        <img src="img/Facebook.svg" alt="Lien de notre page Facebook" class="fb svg">
+            <img src="img/youtube.svg" alt="Lien de notre page youtube" class="youtube svg">
+        <img src="img/instagram.svg" alt="Lien de notre page instagram" class="insta svg">
+        <img src="img/linkledin.svg" alt="Lien de notre page Linkedin" class="linkedin svg">
+
+        </div>
+    </aside>
+
 </footer>
 </body>
 </html>

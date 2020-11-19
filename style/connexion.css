@@ -1,0 +1,53 @@
+/*ARTICLE*/
+.article {
+    padding: 10px;
+    background: rgba(0,0,0,.6);
+    margin: 100px auto;
+    width: 70%;
+    text-align: center;
+    height: 200px;
+}
+
+.article p {
+    color: white;
+}
+
+/*formulaire de connexion*/²
+.form-connexion {
+    margin: 100px auto;
+    padding: 50px;
+    width: 40%;
+    height: 350px;
+}
+
+.form-connexion label {
+    margin-bottom: 5px;
+    color: white;
+    font-size: 1.5em;
+
+}
+
+.form-connexion input {
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 20px;
+    width: 300px;
+    height: 50px;
+    box-shadow: 0px 0px 5px black;
+}
+
+.btn {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    background: #00c800;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.btn:hover {
+    background: #36fd36;
+    transition: 1s;
+}
