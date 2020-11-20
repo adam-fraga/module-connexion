@@ -17,7 +17,7 @@ foreach ($identifiants as $value)
         foreach ($identifiants as $value) {
             if ($value['login'] == $_POST['login'] && $value['password'] == $_POST['pass']) {
 //REDIRIGER USER VERS PAGE MODIF PROFIL
-                $_POST = $_SESSION['user'];
+                $_SESSION['user']=$_POST;
                 header("location: profil.php");
             }
         }

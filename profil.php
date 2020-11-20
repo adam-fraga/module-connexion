@@ -1,17 +1,76 @@
 <?php
 include 'config/db.php';
 session_start();
+$target_user = false;
+
+if (isset($_POST['submit'])) {
+//INITIALISE REQUETE RECUP INFO FROM DB
+    $request = "SELECT * FROM utilisateurs WHERE 1";
+
+
+//Execute requete recup info from DB
+    $query = mysqli_query($connexion, $request);
+
+//RECUP DATA FROM DB
+    $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+
+//Verif log SESSION USER VRAI OU FAUX
+    foreach ($_SESSION as $user) {
+        foreach ($data as $value) {
+            if ($user['login'] == $value['login'] && $user['pass'] == $value['password']) {
+                $target_user = true;
+                $info_user = $value;
+            }
+        }
+    }
+//Initialisation des variable saisit dans le formulairer
+    $name = $_POST['name'];
+    $fname = $_POST['fname'];
+    $pass = $_POST['pass'];
+    $login = $_POST['login'];
+
+    //Recup login utilisateur pour identifier le champs à modifier dans DB
+    $user_login = $info_user['login'];
+
+
+//SI USER INFO CORRECT
+    if ($target_user == true) {
+
+        // Envoi de la requete de modif des infos en DB
+        $query_change = "UPDATE utilisateurs SET prenom='$fname',nom='$name',password='$pass',login='$login' WHERE login='$user_login' ";
+        $query_ok = mysqli_query($connexion, $query_change);
+
+//        SI requête ok changement des identifiants dans variable de SESSION pour l'utilisateur
+        if ($query_ok) {
+            $_SESSION['user']['login'] = $_POST['login'];
+            $_SESSION['user']['pass'] = $_POST['pass'];
+        }
+    }
+}
+
+
+echo "SESSION";
 echo "<pre>";
 print_r($_SESSION);
 echo "/<pre>";
 
-//PREPA REQUETE
-$request = "SELECT * FROM utilisateurs WHERE 1";
-//INITIALISE REQUETE
-$query = mysqli_query($connexion, $request);
-//RECUP DATA
-$data = mysqli_fetch_all($query, MYSQLI_ASSOC);
-//COMPARE SESSION WITH DATA FROM DB
+echo "<br>";
+echo "<br>";
+
+echo "DATA";
+echo "<pre>";
+print_r($data);
+echo "/<pre>";
+
+echo "<br>";
+echo "<br>";
+
+echo "<pre>";
+echo "VALUE";
+print_r($value);
+echo "/<pre>";
+
 
 ?>
 
@@ -35,36 +94,37 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 <?php
 //require_once('header.php');
 ?>
-    <!--PAGE INSCRIPTION-->
+<!--PAGE INSCRIPTION-->
 <div class="container">
     <section class="edit-profil">
         <!--        PRESENTATION-->
         <div class="pres-edit-profil cadre">
             <h2 class="title"> Modifier mes informations</h2>
 
-            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
+            <p class="para">Bienvenue dans le section de modifications de tes informations afin de changer de nom et
+                de
+                prénom il te sera bien entendu demandé de saisir ton login et ton mot de passe, Si tu as oublier ton
+                login et ton mot de passe tu peux toujours les modifier en cliquant sur ce lien
+                <a href="password.php">Mot de passe oublié</a>.</p>
         </div>
         <!--FORMULAIRE-->
         <form action="profil.php" METHOD="post" class="form-edit-profil cadre col">
-            <label for="login">Login</label>
-            <input type="text" id="login" name="login" placeholder="Login"
-                   value="<?php foreach ($data as $key => $value)
+            <label for="name">Nouveau NOM</label>
+            <input type="text" id="name" name="name" required value="">
+            <label for="fname">Nouveau PRENOM</label>
+            <input type="text" id="fname" name="fname" required value="">
+            <label for="login">Nouveau LOGIN</label>
+            <input type="text" id="login" name="login" required value="">
+            <label for="pass">Nouveau PASSWORD</label>
+            <input type="password" id="pass" name="pass" required value="">
 
-                   if ($_SESSION['user']['login'] == $value['login']) {echo $value['login'];} ?>">
-            <label for="pass">New Password</label>
-            <input type="password" id="pass" name="pass" placeholder="Password">
-            <label for="confpass">Confirm new Password</label>
-            <input type="password" id="confpass" name="confpass" placeholder="Confirm your password">
-
-            <button type="submit" name="submit" class="btn ">Valider</button>
+            <button type="submit" name="submit" class="btn ">Change</button>
         </form>
     </section>
 </div>
-    <!--INCLUSION FOOTER-->
+<!--INCLUSION FOOTER-->
 <?php
-require_once ('footer.php');
+require_once('footer.php');
 ?>
 </body>
 </html>
