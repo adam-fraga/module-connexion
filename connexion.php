@@ -2,7 +2,6 @@
 include 'config/db.php';
 include 'config/functions.php';
 session_start();
-
 //Requete
 $userquery = "SELECT * FROM `utilisateurs` WHERE 1";
 //Execution requête
@@ -15,10 +14,15 @@ foreach ($identifiants as $value)
     if (isset($_POST['connexion'])) {
 //Parcourt tout les tableaux DB ET VERIF SI = LOGIN + PASS DE FORM
         foreach ($identifiants as $value) {
-            if ($value['login'] == $_POST['login'] && $value['password'] == $_POST['pass']) {
-//REDIRIGER USER VERS PAGE MODIF PROFIL
-                $_SESSION['user']=$_POST;
+            if ($value['login'] == htmlspecialchars($_POST['login']) && $value['password'] == htmlspecialchars($_POST['pass']) && htmlspecialchars($_POST['login']) != 'admin' && htmlspecialchars($_POST['pass']) != 'admin') {
+//Si user present dans la DB et different de Admin REDIRIGER USER VERS PAGE MODIF PROFIL
+                $_SESSION['user'] = htmlspecialchars($_POST);
                 header("location: profil.php");
+//                Si user admin alors redirige vers page administration
+            } elseif (htmlspecialchars($_POST['login']) == "admin" && htmlspecialchars($_POST['pass']) == "admin") {
+                $_SESSION['admin'] = htmlspecialchars($_POST);
+                header("location: admin.php");
+            
             }
         }
     }
@@ -39,16 +43,13 @@ foreach ($identifiants as $value)
 <body>
 <!--INCLUSION HEADER-->
 <?php
-//include("header.php")
+include("header.php")
 ?>
 <main>
     <!--Formulaire de connexion-->
     <article class="article cadre">
         <h2 class="title">Formulaire de connexion</h2>
-        <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad atque commodi cum debitis
-            exercitationem facere,
-            fugiat iusto laboriosam laudantium maxime molestias natus nihil nobis officiis quis, quos velit voluptate
-            voluptatibus?</p>
+        <p class="para">Connecte toi en utilisant ton Login et ton mot de passe!</p>
     </article>
     5
     <form action="connexion.php" method="post" class=" form-connexion col">
@@ -57,7 +58,6 @@ foreach ($identifiants as $value)
         <label for="pass">Password</label>
         <input type="password" id="pass" name="pass" placeholder="Password">
         <button type="submit" name="connexion" class="btn">GO</button>
-
     </form>
 
 </main>

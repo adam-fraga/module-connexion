@@ -14,7 +14,7 @@
 <body>
 <!--INCLUSION DU HEADER-->
 <?php
-require_once('header.php');
+require('header.php');
 ?>
 <main>
     <h1 class="main-title title">ALESIA</h1>

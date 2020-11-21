@@ -1,3 +1,17 @@
+<?php
+require 'config/db.php';
+if (!$_SESSION['admin'])
+{
+    header("location:connexion.php");
+    exit();
+}
+$request = "SELECT * FROM utilisateurs";
+$query_users = mysqli_query($connexion, $request);
+$users_tab = mysqli_fetch_all($query_users, MYSQLI_ASSOC);
+
+
+?>
+
 <!--MAIN HTML ACCUEIL-->
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,44 +27,27 @@
 <body>
 <!--INCLUSION DU HEADER-->
 <?php
-require_once('header.php');
+require('header.php');
 ?>
 <main>
     <div class="container">
         <article class="article cadre fix-top">
-            <h2 class="title">Information utilisateurs</h2>
-
-            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
+            <h2 class="title">Espace d'administration</h2>
+            <p class="para">Bienvenue dans votre espace d'administration, ici l'administrateur du site peut modifier à
+                sa guise les informations des utilisateurs présent dans la base de donnée.
+            </p>
         </article>
         <table class="info-user">
             <tr>
                 <th>Login</th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Email</th>
                 <th>Mot de passe</th>
             </tr>
-            <tr>
-                <td>Login</td>
-                <td>Nom</td>
-                <td>Prénom</td>
-                <td>Email</td>
-                <td>Mot de passe</td>
-            </tr><tr>
-                <td>Login</td>
-                <td>Nom</td>
-                <td>Prénom</td>
-                <td>Email</td>
-                <td>Mot de passe</td>
-            </tr><tr>
-                <td>Login</td>
-                <td>Nom</td>
-                <td>Prénom</td>
-                <td>Email</td>
-                <td>Mot de passe</td>
-            </tr>
+            <?php foreach ($users_tab as $value) {
+                echo "<tr><td>" . $value['login'] . "</td>" . "<td>" . $value['nom'] . "</td>" . "<td>" . $value['prenom'] . "</td>." . "<td>" . $value['password'] . "</td>" . "</tr>";
+            } ?>
+
 
         </table>
     </div>

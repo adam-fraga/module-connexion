@@ -1,6 +1,11 @@
 <?php
 include 'config/db.php';
 session_start();
+if (!$_SESSION['admin'] || !$_SESSION['user'])
+{
+    header("location:connexion.php");
+    exit();
+}
 $target_user = false;
 
 if (isset($_POST['submit'])) {
@@ -25,10 +30,10 @@ if (isset($_POST['submit'])) {
         }
     }
 //Initialisation des variable saisit dans le formulairer
-    $name = $_POST['name'];
-    $fname = $_POST['fname'];
-    $pass = $_POST['pass'];
-    $login = $_POST['login'];
+    $name = htmlspecialchars($_POST['name']);
+    $fname = htmlspecialchars($_POST['fname']);
+    $pass = htmlspecialchars($_POST['pass']);
+    $login = htmlspecialchars($_POST['login']);
 
     //Recup login utilisateur pour identifier le champs à modifier dans DB
     $user_login = $info_user['login'];
@@ -43,34 +48,11 @@ if (isset($_POST['submit'])) {
 
 //        SI requête ok changement des identifiants dans variable de SESSION pour l'utilisateur
         if ($query_ok) {
-            $_SESSION['user']['login'] = $_POST['login'];
-            $_SESSION['user']['pass'] = $_POST['pass'];
+            $_SESSION['user']['login'] = htmlspecialchars($_POST['login']);
+            $_SESSION['user']['pass'] = htmlspecialchars($_POST['pass']);
         }
     }
 }
-
-
-echo "SESSION";
-echo "<pre>";
-print_r($_SESSION);
-echo "/<pre>";
-
-echo "<br>";
-echo "<br>";
-
-echo "DATA";
-echo "<pre>";
-print_r($data);
-echo "/<pre>";
-
-echo "<br>";
-echo "<br>";
-
-echo "<pre>";
-echo "VALUE";
-print_r($value);
-echo "/<pre>";
-
 
 ?>
 
@@ -92,7 +74,7 @@ echo "/<pre>";
 <body>
 <!--INCLUSION HEADER-->
 <?php
-//require_once('header.php');
+require_once('header.php');
 ?>
 <!--PAGE INSCRIPTION-->
 <div class="container">
@@ -101,24 +83,22 @@ echo "/<pre>";
         <div class="pres-edit-profil cadre">
             <h2 class="title"> Modifier mes informations</h2>
 
-            <p class="para">Bienvenue dans le section de modifications de tes informations afin de changer de nom et
-                de
-                prénom il te sera bien entendu demandé de saisir ton login et ton mot de passe, Si tu as oublier ton
-                login et ton mot de passe tu peux toujours les modifier en cliquant sur ce lien
-                <a href="password.php">Mot de passe oublié</a>.</p>
+            <p class="para">Bienvenue dans le section de modifications de tes informations.
+                ici tu peux changer toutes tes informations en un clin d'oeil. Attention toutefois à ne pas te tromper dans
+            la saisit des dites informations c'est du one shot!</p>
         </div>
         <!--FORMULAIRE-->
         <form action="profil.php" METHOD="post" class="form-edit-profil cadre col">
             <label for="name">Nouveau NOM</label>
-            <input type="text" id="name" name="name" required value="">
+            <input type="text" id="name" name="name" required value="<?php if (!empty($_SESSION)) {echo $info_user['nom'];}?>">
             <label for="fname">Nouveau PRENOM</label>
-            <input type="text" id="fname" name="fname" required value="">
+            <input type="text" id="fname" name="fname" required value="<?php if (!empty($_SESSION)) {echo $info_user['prenom'];}?>">
             <label for="login">Nouveau LOGIN</label>
-            <input type="text" id="login" name="login" required value="">
+            <input type="text" id="login" name="login" required value="<?php if (!empty($_SESSION)) {echo $info_user['login'];}?>">
             <label for="pass">Nouveau PASSWORD</label>
-            <input type="password" id="pass" name="pass" required value="">
+            <input type="password" id="pass" name="pass" required value="<?php if (!empty($_SESSION)) {echo $info_user['password'];}?>">
 
-            <button type="submit" name="submit" class="btn ">Change</button>
+            <button type="submit" name="submit" class="btn ">GO</button>
         </form>
     </section>
 </div>
