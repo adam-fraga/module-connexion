@@ -24,17 +24,16 @@ require('header.php');
 
     <div class="container">
         <article class="article cadre">
-            <h2 class="title"> Title</h2>
+            <h2 class="title"> Nous rejoindre sur Alesia</h2>
 
-            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
-            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
-            <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias, aliquam beatae
-                commodi consequuntur delectus eius eligendi, esse fuga hic illum impedit ipsam molestiae molestias
-                obcaecati, placeat possimus quos repellendus.</p>
+            <p class="para">Le siège d'Alésia est une bataille décisive de la fin de la guerre des Gaules qui voit la
+                défaite d'une coalition de peuples gaulois menée par Vercingétorix face à l'armée romaine de Jules
+                César. Elle se déroule entre les mois de juillet et de septembre 52 av. J.-C.</p>
+            <p class="para">Alesia reprend dans les grandes ligne la confrontation entre l'emprie Romain. et les fières
+                tributs gauloises mais dans une époque beaucoup plus futuriste prends part à la bataille toi aussi
+                reserve dés maintenant ta place pour la beta
+                fermé d'Alesia en t'inscrivant sur
+                notre site!</p>
         </article>
 
     </div>

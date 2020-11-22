@@ -22,10 +22,10 @@
             <li class="items_menu"><a href="profil.php" class="link"><i class="fas fa-user-edit">Profil</i></a></li>
             <li class="items_menu"><span class="admin"><a href="admin.php" class="link"><i class="fas fa-tools">Administration</i></a></span></li>
         </ul>
-        <div class="box-log">
-            <a href="connexion.php" class="link"><i class="fas fa-sign-out-alt"></i></a>
+        <form class="box-log">
             <a href="connexion.php" class="link"><i class="fas fa-sign-in-alt"></i></a>
-        </div>
+            <a href="logout.php" class="link"><i class="fas fa-sign-out-alt"></i></a>
+        </form>
     </nav>
 </header>
 </body>

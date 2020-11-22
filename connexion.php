@@ -1,6 +1,5 @@
 <?php
 include 'config/db.php';
-include 'config/functions.php';
 session_start();
 $id_KO = false;
 //Requete
@@ -34,6 +33,7 @@ if (isset($_POST['connexion'])) {
         }
     }
 }
+
 ?>
 <!doctype html>
 <html lang="en">

@@ -1,9 +1,10 @@
 <?php
 require 'config/db.php';
 session_start();
+//Controle si admin
 if ($_SESSION['user']['isadmin']  == true )
 {
-   echo "Bienvenue dans votre espace d'administration";
+
 }
 else {
     header("location:connexion.php");

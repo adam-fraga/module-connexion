@@ -94,13 +94,13 @@ require('header.php');
         <!--FORMULAIRE-->
         <form action="profil.php" METHOD="post" class="form-edit-profil cadre col">
             <label for="name">Nouveau NOM</label>
-            <input type="text" id="name" name="name" required value="">
+            <input type="text" id="name" name="name" required value="<?php foreach ($data as $value)if ($value['login']==$_SESSION['user']['login']){echo $value['nom'];}?>">
             <label for="fname">Nouveau PRENOM</label>
-            <input type="text" id="fname" name="fname" required value="">
+            <input type="text" id="fname" name="fname" required value="<?php foreach ($data as $value) if ($value['login'] == $_SESSION['user']['login']) {echo $value['prenom'];}?>">
             <label for="login">Nouveau LOGIN</label>
-            <input type="text" id="login" name="login" required value="">
+            <input type="text" id="login" name="login" required value="<?php foreach ($data as $value) if ($value['login'] == $_SESSION['user']['login']) {echo $value['login'];} ?>">
             <label for="pass">Nouveau PASSWORD</label>
-            <input type="password" id="pass" name="pass" required value="">
+            <input type="password" id="pass" name="pass" required value="<?php   ?>">
 
             <button type="submit" name="submit" class="btn ">GO</button>
         </form>
