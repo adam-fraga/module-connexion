@@ -51,3 +51,11 @@
     background: #36fd36;
     transition: 1s;
 }
+/*Identifiant incorrect*/
+
+.id_error{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+}

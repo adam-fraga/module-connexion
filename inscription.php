@@ -23,7 +23,6 @@ if (isset($_POST["valid_inscription"])) {
         header("location: connexion.php");
     }
 }
-
 ?>
 
 <!doctype html>

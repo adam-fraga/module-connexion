@@ -23,10 +23,10 @@
         <hr class="sep-foot">
 
         <div>
-        <img src="img/Facebook.svg" alt="Lien de notre page Facebook" class="fb svg">
+            <img src="img/Facebook.svg" alt="Lien de notre page Facebook" class="fb svg">
             <img src="img/youtube.svg" alt="Lien de notre page youtube" class="youtube svg">
-        <img src="img/instagram.svg" alt="Lien de notre page instagram" class="insta svg">
-        <img src="img/linkledin.svg" alt="Lien de notre page Linkedin" class="linkedin svg">
+            <img src="img/instagram.svg" alt="Lien de notre page instagram" class="insta svg">
+            <img src="img/linkledin.svg" alt="Lien de notre page Linkedin" class="linkedin svg">
 
         </div>
     </aside>

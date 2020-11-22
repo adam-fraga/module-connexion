@@ -2,6 +2,7 @@
 include 'config/db.php';
 include 'config/functions.php';
 session_start();
+$id_KO = false;
 //Requete
 $userquery = "SELECT * FROM `utilisateurs` WHERE 1";
 //Execution requête
@@ -9,25 +10,30 @@ $query = mysqli_query($connexion, $userquery);
 
 //Recup tout les  tableaux ASSOC
 $identifiants = mysqli_fetch_all($query, MYSQLI_ASSOC);
-foreach ($identifiants as $value)
+
+
 //    VERIF SI ACTION DE CONNEXION
-    if (isset($_POST['connexion'])) {
-//Parcourt tout les tableaux DB ET VERIF SI = LOGIN + PASS DE FORM
-        foreach ($identifiants as $value) {
-            if ($value['login'] == htmlspecialchars($_POST['login']) && $value['password'] == htmlspecialchars($_POST['pass']) && htmlspecialchars($_POST['login']) != 'admin' && htmlspecialchars($_POST['pass']) != 'admin') {
-//Si user present dans la DB et different de Admin REDIRIGER USER VERS PAGE MODIF PROFIL
-                $_SESSION['user'] = htmlspecialchars($_POST);
-                header("location: profil.php");
-//                Si user admin alors redirige vers page administration
-            } elseif (htmlspecialchars($_POST['login']) == "admin" && htmlspecialchars($_POST['pass']) == "admin") {
-                $_SESSION['admin'] = htmlspecialchars($_POST);
-                header("location: admin.php");
-            
-            }
+if (isset($_POST['connexion'])) {
+
+    //Parcourt tout les tableaux DB ET VERIF SI = LOGIN + PASS DE FORM
+    foreach ($identifiants as $value) {
+        if (htmlspecialchars($_POST['login']) != "admin" && $value['login'] == htmlspecialchars($_POST['login']) && $value['password'] == htmlspecialchars($_POST['pass']) && htmlspecialchars($_POST['pass']) != "admin" && htmlspecialchars($_POST['login']) != "admin") {
+            //Si user present dans la DB et different de Admin REDIRIGER USER VERS PAGE MODIF PROFIL
+            $_SESSION['user'] = $_POST;
+            $_SESSION['user']['isadmin'] = false;
+            $_SESSION['user']['isconnect'] = true;
+            header("location: profil.php");
+            //                Si user admin alors redirige vers page administration
+        } elseif (htmlspecialchars($_POST['login']) == "admin" && htmlspecialchars($_POST['pass']) == "admin") {
+            $_SESSION['user'] = $_POST;
+            $_SESSION['user']['isadmin'] = true;
+            $_SESSION['user']['isconnect'] = true;
+            header("location: admin.php");
+        } else {
+            $id_KO = true;
         }
     }
-//    SI LE TEMPS CREER UN FICHIER DE GESTION DES MESSAGES D'ERREUR ET L'INCLUDE ET VOIR POUR FONCTIONS
-
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -51,13 +57,18 @@ include("header.php")
         <h2 class="title">Formulaire de connexion</h2>
         <p class="para">Connecte toi en utilisant ton Login et ton mot de passe!</p>
     </article>
-    5
-    <form action="connexion.php" method="post" class=" form-connexion col">
+
+    <form action="connexion.php" method="post" class="form-connexion col">
         <label for="login">Login</label>
-        <input type="text" id="login" name="login" placeholder="Login">
+        <input type="text" id="login" name="login" required placeholder="Login">
         <label for="pass">Password</label>
-        <input type="password" id="pass" name="pass" placeholder="Password">
+        <input type="password" id="pass" name="pass" required placeholder="Password">
         <button type="submit" name="connexion" class="btn">GO</button>
+        <?php
+        if ($id_KO = true) {
+            echo '<p class="id_error">' . "Tes identifiants sont incorrects!" . '</p>';
+        }
+        ?>
     </form>
 
 </main>

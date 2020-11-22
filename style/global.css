@@ -10,10 +10,10 @@
     src: url("../font/Quantum.otf") format("opentype");
 }
 /*TEXTURE PAGE*/
-/*body{*/
-/*    background:fixed center center no-repeat url("../img/cubic.jpg");*/
-/*    background-size: cover;*/
-/*}*/
+body{
+    background:fixed center center no-repeat url("../img/cubic.jpg");
+    background-size: cover;
+}
 
 /*FLEX*/
 .col{

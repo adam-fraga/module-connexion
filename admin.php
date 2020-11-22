@@ -1,14 +1,17 @@
 <?php
 require 'config/db.php';
-if (!$_SESSION['admin'])
+session_start();
+if ($_SESSION['user']['isadmin']  == true )
 {
+   echo "Bienvenue dans votre espace d'administration";
+}
+else {
     header("location:connexion.php");
     exit();
 }
 $request = "SELECT * FROM utilisateurs";
 $query_users = mysqli_query($connexion, $request);
 $users_tab = mysqli_fetch_all($query_users, MYSQLI_ASSOC);
-
 
 ?>
 

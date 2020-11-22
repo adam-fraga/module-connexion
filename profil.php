@@ -1,33 +1,34 @@
 <?php
 include 'config/db.php';
 session_start();
-if (!$_SESSION['admin'] || !$_SESSION['user'])
-{
-    header("location:connexion.php");
+if ($_SESSION['user']['isconnect'] == true) {
+
+} else {
+    header("location: connexion.php");
     exit();
 }
 $target_user = false;
 
-if (isset($_POST['submit'])) {
 //INITIALISE REQUETE RECUP INFO FROM DB
-    $request = "SELECT * FROM utilisateurs WHERE 1";
+$request = "SELECT * FROM utilisateurs WHERE 1";
 
 
 //Execute requete recup info from DB
-    $query = mysqli_query($connexion, $request);
+$query = mysqli_query($connexion, $request);
 
 //RECUP DATA FROM DB
-    $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+$data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
+if (isset($_POST['submit'])) {
 
 //Verif log SESSION USER VRAI OU FAUX
-    foreach ($_SESSION as $user) {
-        foreach ($data as $value) {
-            if ($user['login'] == $value['login'] && $user['pass'] == $value['password']) {
-                $target_user = true;
-                $info_user = $value;
-            }
+
+    foreach ($data as $value) {
+        if ($_SESSION['user']['login'] == $value['login'] && $_SESSION['user']['pass'] == $value['password']) {
+            $target_user = true;
+            $info_user = $value;
         }
+
     }
 //Initialisation des variable saisit dans le formulairer
     $name = htmlspecialchars($_POST['name']);
@@ -74,7 +75,7 @@ if (isset($_POST['submit'])) {
 <body>
 <!--INCLUSION HEADER-->
 <?php
-require_once('header.php');
+require('header.php');
 ?>
 <!--PAGE INSCRIPTION-->
 <div class="container">
@@ -82,21 +83,24 @@ require_once('header.php');
         <!--        PRESENTATION-->
         <div class="pres-edit-profil cadre">
             <h2 class="title"> Modifier mes informations</h2>
-
-            <p class="para">Bienvenue dans le section de modifications de tes informations.
+            <?php if ($_SESSION['user']['isconnect'] == true) {
+                echo '<p class="para">' . 'Bonjour' . ' ' . '<b>' . $_SESSION['user']['login'] . '</b>' . ' ' . "bienvenue dans le section de modifications de tes informations.
                 ici tu peux changer toutes tes informations en un clin d'oeil. Attention toutefois à ne pas te tromper dans
-            la saisit des dites informations c'est du one shot!</p>
+            la saisit des dites informations c'est du one shot!" . '</p>';
+            } ?>
+
+
         </div>
         <!--FORMULAIRE-->
         <form action="profil.php" METHOD="post" class="form-edit-profil cadre col">
             <label for="name">Nouveau NOM</label>
-            <input type="text" id="name" name="name" required value="<?php if (!empty($_SESSION)) {echo $info_user['nom'];}?>">
+            <input type="text" id="name" name="name" required value="">
             <label for="fname">Nouveau PRENOM</label>
-            <input type="text" id="fname" name="fname" required value="<?php if (!empty($_SESSION)) {echo $info_user['prenom'];}?>">
+            <input type="text" id="fname" name="fname" required value="">
             <label for="login">Nouveau LOGIN</label>
-            <input type="text" id="login" name="login" required value="<?php if (!empty($_SESSION)) {echo $info_user['login'];}?>">
+            <input type="text" id="login" name="login" required value="">
             <label for="pass">Nouveau PASSWORD</label>
-            <input type="password" id="pass" name="pass" required value="<?php if (!empty($_SESSION)) {echo $info_user['password'];}?>">
+            <input type="password" id="pass" name="pass" required value="">
 
             <button type="submit" name="submit" class="btn ">GO</button>
         </form>
